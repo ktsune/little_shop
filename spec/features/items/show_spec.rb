@@ -21,5 +21,15 @@ RSpec.describe 'Item Show Page' do
       expect(page).to have_content("Sold by: #{@megan.name}")
       expect(page).to have_link(@megan.name)
     end
+
+    it "I can click a button to add an item to my cart" do
+      visit "/items/#{@ogre.id}"
+
+      click_button "Add to Cart"
+
+      expect(current_path).to eq("/items")
+      expect(page).to have_content("#{@ogre.name} has been added to your cart!")
+      expect(page).to have_content("Cart: 1")
+    end
   end
 end
