@@ -1,2 +1,0 @@
-class Cart
-end
