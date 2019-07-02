@@ -8,6 +8,15 @@ RSpec.describe 'Item Show Page' do
       @ogre = @megan.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 5 )
       @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
       @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
+
+      @ogre_review_1 = @ogre.reviews.create!(title: 'Ogres are great!', content: 'I really like ogres, but I have a slight pref towards giants', rating: 4)
+      @ogre_review_2 = @ogre.reviews.create!(title: 'Ogres are great!', content: 'I really like ogres, but I have a slight pref towards giants', rating: 4)
+
+      @giant_review_1 = @giant.reviews.create!(title: 'Giants rock my socks!', content: 'Oh me oh my I really like giants', rating: 5)
+      @giant_review_2 = @giant.reviews.create!(title: 'Giants rock my socks!', content: 'Oh me oh my I really like giants', rating: 5)
+
+      @hippo_review_1 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like hippos but I would rather have a hippocatdog', rating: 3)
+      @hippo_review_2 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like hippos but I would rather have a hippocatdog', rating: 3)
     end
 
     it "I can see the items details" do
