@@ -10,10 +10,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    binding.pry
-    @review = Review.find(params[:id])
-    @review.item_id = params[:item_id]
-    @review.save
   end
 
   def new
