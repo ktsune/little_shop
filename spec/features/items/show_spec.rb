@@ -8,6 +8,13 @@ RSpec.describe 'Item Show Page' do
       @ogre = @megan.items.create!(name: 'Ogre', description: "I'm an Ogre!", price: 20, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 5 )
       @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
       @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
+
+      @ogre_review_1 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 5)
+      @ogre_review_2 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 5)
+      @giant_review_1 = @giant.reviews.create!(title: 'Giants are cool', content: 'I like Giants', rating: 5)
+      @giant_review_2 = @giant.reviews.create!(title: 'Giants are cool', content: 'I like Giants', rating: 5)
+      @hippo_review_1 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 5)
+      @hippo_review_2 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 5)
     end
 
     it "I can see the items details" do
@@ -20,6 +27,27 @@ RSpec.describe 'Item Show Page' do
       expect(page).to have_content("Inventory: #{@ogre.inventory}")
       expect(page).to have_content("Sold by: #{@megan.name}")
       expect(page).to have_link(@megan.name)
+
+      expect(page).to have_content(@ogre_review_1.title)
+      expect(page).to have_content(@ogre_review_2.title)
+      expect(page).to have_content(@ogre_review_1.content)
+      expect(page).to have_content(@ogre_review_2.content)
+      expect(page).to have_content(@ogre_review_1.rating)
+      expect(page).to have_content(@ogre_review_2.rating)
+
+      expect(page).to have_content(@giant_review_1.title)
+      expect(page).to have_content(@giant_review_2.title)
+      expect(page).to have_content(@giant_review_1.content)
+      expect(page).to have_content(@giant_review_2.content)
+      expect(page).to have_content(@giant_review_1.rating)
+      expect(page).to have_content(@giant_review_2.rating)
+
+      expect(page).to have_content(@hippo_review_1.title)
+      expect(page).to have_content(@hippo_review_2.title)
+      expect(page).to have_content(@hippo_review_1.content)
+      expect(page).to have_content(@hippo_review_2.content)
+      expect(page).to have_content(@hippo_review_1.rating)
+      expect(page).to have_content(@hippo_review_2.rating)
     end
   end
 end

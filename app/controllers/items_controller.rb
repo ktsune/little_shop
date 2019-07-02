@@ -10,6 +10,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    binding.pry
+    @review = Review.find(params[:id])
+    @review.item_id = params[:item_id]
+    @review.save
   end
 
   def new
@@ -44,5 +48,9 @@ class ItemsController < ApplicationController
 
   def item_params
     params.permit(:name, :description, :price, :image, :inventory)
+  end
+
+  def review_params
+    params.permit(:title, :content, :rating)
   end
 end
