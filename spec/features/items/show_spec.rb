@@ -29,7 +29,6 @@ RSpec.describe 'Item Show Page' do
 
       expect(current_path).to eq("/items")
       expect(page).to have_content("#{@ogre.name} has been added to your cart!")
-      expect(page).to have_content("Cart: 1")
     end
   end
 end
