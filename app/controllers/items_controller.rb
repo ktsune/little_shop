@@ -10,8 +10,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    binding.pry
-    @reviews = @item.reviews
   end
 
   def new

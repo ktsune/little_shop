@@ -5,7 +5,12 @@
 <p>Sold by: <%= link_to @item.merchant.name, "/merchants/#{@item.merchant_id}" %>, Inventory: <%= @item.inventory %></p>
 <p><%= @item.active ? "Active" : "Inactive" %></p>
 
-<p> <%= @reviews.title %></p>
+<% @item.reviews.each do |review| %>
+  <h3><%= review.title %></h3>
+  <%= review.content %>
+  <%= review.rating %>
+<% end %>
 
+<%= button_to "Add to Cart", "/cart/#{@item.id}" %>
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
