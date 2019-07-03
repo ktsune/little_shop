@@ -12,6 +12,6 @@ class CartController < ApplicationController
 
   def show
     @cart = Cart.new(session[:cart])
-    binding.pry
+    @items = @cart.contents
   end
 end
