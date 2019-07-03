@@ -21,8 +21,8 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    if merchant_params.values.include?("")
-      flash[:bad_update] = "You are missing required fields"
+    if new_params.values.include?("")
+      @merchant.errors.full_messages
     else
       @merchant.update(merchant_params)
     end
@@ -39,4 +39,9 @@ class MerchantsController < ApplicationController
   def merchant_params
     params.permit(:name, :address, :city, :state, :zip)
   end
+
+
+    def new_params
+      binding.pry
+    end
 end
