@@ -21,7 +21,8 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    if new_params.values.include?("")
+    binding.pry
+    if !@merchant.update(merchant_params)
       @merchant.errors.full_messages
     else
       @merchant.update(merchant_params)
@@ -41,7 +42,7 @@ class MerchantsController < ApplicationController
   end
 
 
-    def new_params
-      binding.pry
-    end
+  def new_params
+    binding.pry
+  end
 end

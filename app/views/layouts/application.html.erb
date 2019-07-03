@@ -16,7 +16,7 @@
     </nav>
 
     <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: type %>
+      <%= message %>
     <% end %>
 
     <%= yield %>
