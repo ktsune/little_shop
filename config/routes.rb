@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   patch '/items/:id', to: 'items#update'
   delete '/items/:id', to: 'items#destroy'
 
-  resources :cart, only: [:create]
+  get '/cart', to: 'cart#show'
+  post '/cart/:item_id', to: 'cart#create'
+
+  # resources :cart, only: [:create]
 end
