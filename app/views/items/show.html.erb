@@ -11,6 +11,6 @@
   <%= review.rating %>
 <% end %>
 
-<%= button_to "Add to Cart", "/cart/#{@item.id}" %>
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+<%= button_to "Add to Cart", "/cart/#{@item.id}" %>

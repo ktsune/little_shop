@@ -12,8 +12,13 @@
     <nav>
       <%= link_to 'Merchants', '/merchants' %>
       <%= link_to 'Items', '/items' %>
-      <h5>Cart: </h5>
+      <h5>Cart: <%= cart.item_count %></h5>
     </nav>
+
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: type %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

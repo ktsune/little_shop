@@ -49,5 +49,14 @@ RSpec.describe 'Item Show Page' do
       expect(page).to have_content(@hippo_review_1.rating)
       expect(page).to have_content(@hippo_review_2.rating)
     end
+
+    it "I can click a button to add an item to my cart" do
+      visit "/items/#{@ogre.id}"
+
+      click_button "Add to Cart"
+
+      expect(current_path).to eq("/items")
+      expect(page).to have_content("#{@ogre.name} has been added to your cart!")
+    end
   end
 end
