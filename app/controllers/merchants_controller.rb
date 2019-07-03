@@ -21,7 +21,11 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    @merchant.update(merchant_params)
+    if merchant_params.values.include?("")
+      flash[:bad_update] = "You are missing required fields"
+    else
+      @merchant.update(merchant_params)
+    end
     redirect_to "/merchants/#{@merchant.id}"
   end
 

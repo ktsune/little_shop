@@ -40,5 +40,18 @@ RSpec.describe 'Existing Merchant Update' do
         expect(page).to have_content("#{city} #{state} #{zip}")
       end
     end
+
+    it "will flash a message if unable to update merchant properly" do
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'Address', with: "addressy"
+      fill_in 'City', with: "whoville"
+      fill_in 'State', with: "whotastic"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("You are missing required fields")
+    end
   end
 end
