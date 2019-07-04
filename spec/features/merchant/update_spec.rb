@@ -40,5 +40,72 @@ RSpec.describe 'Existing Merchant Update' do
         expect(page).to have_content("#{city} #{state} #{zip}")
       end
     end
+
+    it "will flash a message if unable to update merchant properly" do
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'Address', with: "addressy"
+      fill_in 'City', with: "whoville"
+      fill_in 'State', with: "whotastic"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("Zip can't be blank")
+
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'Address', with: "addressy"
+      fill_in 'City', with: "whoville"
+      fill_in 'Zip', with: "81753"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("State can't be blank")
+
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Address', with: "addressy"
+      fill_in 'City', with: "whoville"
+      fill_in 'State', with: "CO"
+      fill_in 'Zip', with: "81753"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("Name can't be blank")
+
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'City', with: "whoville"
+      fill_in 'State', with: "CO"
+      fill_in 'Zip', with: "81753"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("Address can't be blank")
+
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'Address', with: "addressy"
+      fill_in 'State', with: "CO"
+      fill_in 'Zip', with: "81753"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("City can't be blank")
+
+      visit "/merchants/#{@megan.id}/edit"
+
+      fill_in 'Name', with: "name"
+      fill_in 'Address', with: "addressy"
+      fill_in 'Zip', with: "81753"
+
+      click_button 'Update Merchant'
+
+      expect(page).to have_content("City can't be blank. State can't be blank")
+    end
   end
 end

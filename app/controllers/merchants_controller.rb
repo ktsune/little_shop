@@ -11,8 +11,13 @@ class MerchantsController < ApplicationController
   end
 
   def create
-    Merchant.create(merchant_params)
-    redirect_to '/merchants'
+    merchant = Merchant.new(merchant_params)
+    if merchant.save
+      redirect_to '/merchants'
+    else
+      flash[:error] = merchant.errors.full_messages.join(". ")
+      render :new
+    end
   end
 
   def edit
@@ -21,7 +26,11 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    @merchant.update(merchant_params)
+    if !@merchant.update(new_params)
+      flash[:error] = @merchant.errors.full_messages.join(". ")
+    else
+      @merchant.update(new_params)
+    end
     redirect_to "/merchants/#{@merchant.id}"
   end
 
@@ -33,6 +42,10 @@ class MerchantsController < ApplicationController
   private
 
   def merchant_params
+    params.permit(:name, :address, :city, :state, :zip)
+  end
+
+  def new_params
     params.permit(:name, :address, :city, :state, :zip)
   end
 end
