@@ -24,16 +24,13 @@ RSpec.describe 'Cart Show Page' do
           expect(page).to have_content(@ogre.merchant)
           expect(page).to have_content(@ogre.price)
           expect(page).to have_content(@ogre.desired_quantity)
-          expect(page).to have_content(@ogre.subtotal)
+
 
           expect(page).to have_content(@giant.name)
           expect(page).to have_content(@giant.image)
           expect(page).to have_content(@giant.merchant)
           expect(page).to have_content(@giant.price)
           expect(page).to have_content(@giant.desired_quantity)
-          expect(page).to have_content(@giant.subtotal)
-
-
         end
       end
     end
