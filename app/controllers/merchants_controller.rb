@@ -21,11 +21,10 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    binding.pry
-    if !@merchant.update(merchant_params)
-      @merchant.errors.full_messages
+    if !@merchant.update(new_params)
+      flash[:error] = @merchant.errors.full_messages.join("")
     else
-      @merchant.update(merchant_params)
+      @merchant.update(new_params)
     end
     redirect_to "/merchants/#{@merchant.id}"
   end
@@ -41,8 +40,7 @@ class MerchantsController < ApplicationController
     params.permit(:name, :address, :city, :state, :zip)
   end
 
-
   def new_params
-    binding.pry
+    params.permit(:name, :address, :city, :state, :zip)
   end
 end
