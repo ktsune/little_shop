@@ -56,7 +56,16 @@ ActiveRecord::Schema.define(version: 20190703204059) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.integer "rating"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_reviews_on_item_id"
+  end
+
   add_foreign_key "items", "merchants"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
+  add_foreign_key "reviews", "items"
 end
