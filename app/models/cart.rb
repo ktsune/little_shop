@@ -17,4 +17,28 @@ class Cart
   def add_item(item_id)
     @contents[item_id.to_s] += 1
   end
+
+  def count_item(item_id)
+    @contents[item_id.to_s]
+  end
+
+  def total
+    @contents.sum do |item_id, quantity|
+      item = Item.find(item_id)
+      item.price * quantity
+    end
+  end
+
+  def quantity
+    @contents.each do |item_id, quantity|
+      quantity
+    end
+  end
+
+  def display_cart
+    cart = @contents.map do |item_id, quantity|
+      [Item.find(item_id), quantity]
+    end
+  end
+
 end
