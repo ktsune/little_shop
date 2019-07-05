@@ -19,6 +19,7 @@ class CartController < ApplicationController
 
   def destroy
     session.delete(:cart)
+    flash[:notice] = "Your cart is empty."
     redirect_to '/cart'
   end
 end
