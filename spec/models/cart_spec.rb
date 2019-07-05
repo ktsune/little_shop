@@ -41,7 +41,7 @@ RSpec.describe Cart do
       cart.add_item(@ogre.id)
       cart.add_item(@giant.id)
 
-      expect(cart.total).to eq(90.0)
+      expect(cart.total).to eq(90)
     end
   end
 end
