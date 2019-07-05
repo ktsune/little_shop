@@ -33,15 +33,12 @@ RSpec.describe 'Cart Show Page' do
         click_button 'Add to Cart'
 
         visit '/cart'
-        
+
         expect(page).to have_content("Cart: 3")
-        # expect(page).to have_content("Subtotal: 90")
-        # expect(page).to have_content(@ogre.name + " cart")
-        # expect(page).to have_content()
-        # expect(page).to have_content("Ogre")
-        # expect(page).to have_content(3)
-        # expect(page).to have_content(96.3)
-          # end
+        expect(page).to have_content("Subtotal: 50")
+        expect(page).to have_content("Total: 90")
+        expect(page).to have_content("Ogre")
+        expect(page).to have_content(@ogre.merchant.name)
         end
       end
     end
