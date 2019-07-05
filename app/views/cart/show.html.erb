@@ -1,1 +1,14 @@
+<h2>Cart</h2>
+
+<% @items.each do |item,quantity| %>
+  <h4>Item: <%= item.name %></h4>
+  <p><%= image_tag item.image %></p>
+  <p>Merchant: <%= item.merchant.name %></p>
+  <p>Price: <%= item.price %></p>
+  <p>Subtotal: <%= item.price * quantity %></p>
+<% end %>
+
+<p>Total: <%= cart.total %></p>
+
+<%= link_to "Checkout", new_order_path %>
 
