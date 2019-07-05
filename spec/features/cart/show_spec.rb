@@ -39,7 +39,7 @@ RSpec.describe 'Cart Show Page' do
         expect(page).to have_content("Total: 90")
         expect(page).to have_content("Ogre")
         expect(page).to have_content(@ogre.merchant.name)
-        end
+      end
 
         it 'I see a link to checkout' do
 
@@ -54,6 +54,23 @@ RSpec.describe 'Cart Show Page' do
           click_link "Checkout"
           expect(current_path).to eq(new_order_path)
         end
+
+        it 'I can click a link to empty my cart IF there are items in it' do
+
+          visit "/items/#{@ogre.id}"
+          click_button 'Add to Cart'
+
+          visit "/items/#{@giant.id}"
+          click_button 'Add to Cart'
+
+          visit '/cart'
+          click_button 'Empty Cart'
+          visit '/cart'
+
+          expect(page).to have_content("There are no items in your cart!")
+          expect(page).to not_have_content(@giant.name)
+          expect(page).to not_have_content(@ogre.name)
+        end 
       end
     end
   end
