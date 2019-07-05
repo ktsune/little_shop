@@ -28,8 +28,8 @@ RSpec.describe 'New Order' do
       expect(page).to have_content(@giant.merchant.name)
       expect(page).to have_content(@giant.price)
       expect(page).to have_content(@ogre.price)
-      # expect(page).to have_content(@giant.order_items.quantity)
-      # expect(page).to have_content(@ogre.order_items.quantity)
+      expect(page).to have_content("Amount: 1")
+      expect(page).to have_content("Amount: 1")
       expect(page).to have_content("Total: 70")
 
       expect(page).to have_content("Shipping Information")
