@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   get '/cart', to: 'cart#show'
   post '/cart/:item_id', to: 'cart#create'
 
+  resources :orders, only: :new
+
   # resources :cart, only: [:create]
 end
