@@ -10,27 +10,38 @@ RSpec.describe 'Cart Show Page' do
         @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
       end
 
-        it 'I can see the details of every item in the cart' do
-          visit "/items/#{@ogre.id}"
-          click_button 'Add to Cart'
+      it "displays the total number of items in the cart" do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
 
-          visit "/items/#{@giant.id}"
-          click_button 'Add to Cart'
+        visit "/items/#{@giant.id}"
+        click_button 'Add to Cart'
 
-          visit '/cart'
+        visit '/cart'
 
-          expect(page).to have_content(@ogre.name)
-          expect(page).to have_content(@ogre.image)
-          expect(page).to have_content(@ogre.merchant)
-          expect(page).to have_content(@ogre.price)
-          expect(page).to have_content(@ogre.desired_quantity)
+        expect(page).to have_content("Cart: 2")
+      end
 
+      it 'I can see the details of every item in the cart' do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
 
-          expect(page).to have_content(@giant.name)
-          expect(page).to have_content(@giant.image)
-          expect(page).to have_content(@giant.merchant)
-          expect(page).to have_content(@giant.price)
-          expect(page).to have_content(@giant.desired_quantity)
+        visit "/items/#{@giant.id}"
+        click_button 'Add to Cart'
+
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
+
+        visit '/cart'
+        
+        expect(page).to have_content("Cart: 3")
+        # expect(page).to have_content("Subtotal: 90")
+        # expect(page).to have_content(@ogre.name + " cart")
+        # expect(page).to have_content()
+        # expect(page).to have_content("Ogre")
+        # expect(page).to have_content(3)
+        # expect(page).to have_content(96.3)
+          # end
         end
       end
     end
