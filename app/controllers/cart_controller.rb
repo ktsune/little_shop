@@ -16,4 +16,9 @@ class CartController < ApplicationController
     cart = Cart.new(session[:cart])
     @items = cart.display_cart
   end
+
+  def destroy
+    session.delete(:cart)
+    redirect_to '/cart'
+  end
 end
