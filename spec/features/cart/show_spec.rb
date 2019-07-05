@@ -40,6 +40,20 @@ RSpec.describe 'Cart Show Page' do
         expect(page).to have_content("Ogre")
         expect(page).to have_content(@ogre.merchant.name)
         end
+
+        it 'I see a link to checkout' do
+
+          visit "/items/#{@ogre.id}"
+          click_button 'Add to Cart'
+
+          visit "/items/#{@giant.id}"
+          click_button 'Add to Cart'
+
+          visit '/cart'
+
+          click_link "Checkout"
+          expect(current_path).to eq(new_order_path)
+        end
       end
     end
   end
