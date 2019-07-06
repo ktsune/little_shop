@@ -60,5 +60,37 @@ RSpec.describe "Order show" do
 
       expect(page).to have_content(order.created_at)
     end
+
+    it "flashes a message if missing information" do
+
+      name = 'name'
+      address = 'streeterville'
+      city = 'city'
+      state = 'staterville'
+      zip = 12345
+
+      visit "/items/#{@ogre.id}"
+      click_button 'Add to Cart'
+
+      visit "/items/#{@ogre.id}"
+      click_button 'Add to Cart'
+
+      visit "/items/#{@giant.id}"
+      click_button 'Add to Cart'
+
+      visit '/cart'
+
+      click_link "Checkout"
+
+      within '#shipping' do
+        fill_in "Name", with: name
+        fill_in "Address", with: address
+        fill_in "City", with: city
+        fill_in "Zip", with: zip
+      end
+
+      click_button "Create Order"
+      expect(page).to have_content("You are missing required shipping address information!")
+    end
   end
 end
