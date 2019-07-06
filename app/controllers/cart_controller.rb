@@ -22,9 +22,7 @@ class CartController < ApplicationController
     cart = Cart.new(session[:cart])
     @items = cart.add_item(@item.id)
     session[:cart] = cart.contents
-    flash[:message] = "#{@item.name} has been added to your cart!"
     quantity = cart.count_item(@item.id)
-    flash[:notice] = "You now have #{pluralize(quantity, "copy")} of #{@item.name} in your cart."
     redirect_to '/cart'
   end
 
