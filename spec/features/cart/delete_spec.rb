@@ -22,7 +22,7 @@ RSpec.describe 'Delete Cart' do
 
           expect(current_path).to eq('/cart')
 
-          # expect(page).to have_content("There are no items in your cart!")
+          expect(page).to have_content("There are no items in your cart!")
           expect(page).to_not have_css("#cart-#{@ogre.id}")
           expect(page).to_not have_css("#cart-#{@giant.id}")
         end
