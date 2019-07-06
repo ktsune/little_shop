@@ -1,11 +1,13 @@
 <h2>Cart</h2>
 
 <% @items.each do |item,quantity| %>
+<div id="id-<%= item.id %>" class="cart_items">
   <h4>Item: <%= item.name %></h4>
   <p><%= image_tag item.image %></p>
   <p>Merchant: <%= item.merchant.name %></p>
   <p>Price: <%= item.price %></p>
   <p>Subtotal: <%= item.price * quantity %></p>
+  <%= button_to "Remove from Cart", "/cart/#{item.id}", method: :delete %>
 <% end %>
 
 <p>Total: <%= cart.total %></p>
