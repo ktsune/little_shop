@@ -53,6 +53,18 @@ RSpec.describe 'Cart Show Page' do
           click_link "Checkout"
           expect(current_path).to eq(new_order_path)
         end
+
+        it 'next to each item in my cart is an incrementer for quantity of item' do
+          visit "/items/#{@ogre.id}"
+          click_button 'Add to Cart'
+
+          visit '/cart'
+          click_button 'Add 1 item'
+          visit '/cart'
+
+          expect(current_path).to eq('/cart')
+          expect(page).to have_content("Item Count: 2")
+        end
       end
     end
   end
