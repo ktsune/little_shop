@@ -10,6 +10,15 @@
   <%= button_to "Remove from Cart", "/cart/#{item.id}", method: :delete %>
 <% end %>
 
+<% @items.each do |item, quantity| %>
+  <% if quantity > item.inventory %>
+    <p>Sorry, we're out of this item!</p>
+  <% else %>
+    <%= button_to "Add 1 item", "/cart/#{item.id}", method: :patch %>
+    <p>Item Count: <%= quantity %></p>
+  <% end %>
+<% end %>
+
 <p>Total: <%= cart.total %></p>
 
 <% if @items.empty? %>
