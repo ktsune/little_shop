@@ -9,7 +9,7 @@ RSpec.describe 'New Order' do
       @giant = @megan.items.create!(name: 'Giant', description: "I'm a Giant!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
     end
 
-    it 'I see the details of my cart' do
+    it 'I see a new order page' do
 
       visit "/items/#{@ogre.id}"
       click_button 'Add to Cart'
@@ -20,7 +20,6 @@ RSpec.describe 'New Order' do
       visit '/cart'
 
       click_link "Checkout"
-# - a subtotal (price multiplied by quantity)
 
       expect(page).to have_content(@giant.name)
       expect(page).to have_content(@ogre.name)

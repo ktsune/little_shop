@@ -23,6 +23,9 @@ class CartController < ApplicationController
     @items = cart.add_item(@item.id)
     session[:cart] = cart.contents
     quantity = cart.count_item(@item.id)
+
+  def delete
+    cart.contents.delete(params[:item_id])
     redirect_to '/cart'
   end
 

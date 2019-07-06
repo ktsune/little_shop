@@ -41,17 +41,30 @@ RSpec.describe 'Cart Show Page' do
         expect(page).to have_content(@ogre.merchant.name)
       end
 
-        it 'I see a link to checkout' do
-          visit "/items/#{@ogre.id}"
-          click_button 'Add to Cart'
+      it 'I see a link to checkout' do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
 
-          visit "/items/#{@giant.id}"
-          click_button 'Add to Cart'
+        visit "/items/#{@giant.id}"
+        click_button 'Add to Cart'
 
-          visit '/cart'
+        visit '/cart'
 
-          click_link "Checkout"
-          expect(current_path).to eq(new_order_path)
+        click_link "Checkout"
+        expect(current_path).to eq(new_order_path)
+      end
+
+      it 'I see a link to remove an item' do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
+
+        visit "/items/#{@giant.id}"
+        click_button 'Add to Cart'
+
+        visit '/cart'
+
+        within "#id-#{@giant.id}", match: :first do
+          click_button "Remove from Cart"
         end
 
         it 'next to each item in my cart is an incrementer for quantity of item' do
@@ -65,6 +78,11 @@ RSpec.describe 'Cart Show Page' do
           expect(current_path).to eq('/cart')
           expect(page).to have_content("Item Count: 2")
         end
+
+        expect(page).to have_content("Cart: 1")
+        expect(page).to have_content("#{@ogre.name}")
+        expect(page).to have_content("#{@ogre.price}")
       end
     end
   end
+end
