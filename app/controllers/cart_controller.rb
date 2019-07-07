@@ -25,7 +25,7 @@ class CartController < ApplicationController
     quantity = cart.count_item(@item.id)
   end
 
-  def delete
+  def remove_item
     cart.contents.delete(params[:item_id])
     redirect_to '/cart'
   end

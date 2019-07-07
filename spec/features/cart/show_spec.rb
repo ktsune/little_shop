@@ -67,21 +67,21 @@ RSpec.describe 'Cart Show Page' do
           click_button "Remove from Cart"
         end
 
-        it 'next to each item in my cart is an incrementer for quantity of item' do
-          visit "/items/#{@ogre.id}"
-          click_button 'Add to Cart'
-
-          visit '/cart'
-          click_button 'Add 1 item'
-          visit '/cart'
-
-          expect(current_path).to eq('/cart')
-          expect(page).to have_content("Item Count: 2")
-        end
-
         expect(page).to have_content("Cart: 1")
         expect(page).to have_content("#{@ogre.name}")
         expect(page).to have_content("#{@ogre.price}")
+      end
+
+      it 'next to each item in my cart is an incrementer for quantity of item' do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
+
+        visit '/cart'
+        click_button 'Add 1 item'
+        visit '/cart'
+
+        expect(current_path).to eq('/cart')
+        expect(page).to have_content("Item Count: 2")
       end
     end
   end
