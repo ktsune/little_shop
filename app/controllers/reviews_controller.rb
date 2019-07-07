@@ -5,9 +5,13 @@ class ReviewsController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @item.reviews.create(review_params)
-
-    redirect_to "/items/#{@item.id}"
+    @review = @item.reviews.new(review_params)
+    if @review.save
+      redirect_to "/items/#{@item.id}"
+    else
+      flash[:error] = @review.errors.full_messages.join(". ")
+      render :new
+    end
   end
 
   private
