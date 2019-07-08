@@ -3,7 +3,6 @@ class CartController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    cart = Cart.new(session[:cart])
     @items = cart.add_item(@item.id)
     session[:cart] = cart.contents
     flash[:message] = "#{@item.name} has been added to your cart!"
@@ -19,7 +18,6 @@ class CartController < ApplicationController
 
   def add_item
     @item = Item.find(params[:item_id])
-    cart = Cart.new(session[:cart])
     @items = cart.add_item(@item.id)
     session[:cart] = cart.contents
     quantity = cart.count_item(@item.id)
@@ -28,7 +26,6 @@ class CartController < ApplicationController
 
   def remove_item
     @item = Item.find(params[:item_id])
-    cart = Cart.new(session[:cart])
     @items = cart.remove_item(@item.id)
     session[:cart] = cart.contents
     quantity = cart.count_item(@item.id)
@@ -49,12 +46,3 @@ class CartController < ApplicationController
     redirect_to '/cart'
   end
 end
-
-# private
-#
-#   def delete_redirect
-#     quantity = cart.count_item(@item.id)
-#     if quantity == 0
-#       redirect_to :action => 'delete'
-#     end
-#   end
