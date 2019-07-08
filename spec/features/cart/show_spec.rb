@@ -66,12 +66,24 @@ RSpec.describe 'Cart Show Page' do
           within "#id-#{@giant.id}", match: :first do
             click_button "Remove from Cart"
           end
-          
+
           expect(page).to have_content("Cart: 1")
           expect(page).to have_content("#{@ogre.name}")
           expect(page).to have_content("#{@ogre.price}")
         end
 
+        it 'next to each item in my cart is an incrementer for quantity of item' do
+          visit "/items/#{@ogre.id}"
+          click_button 'Add to Cart'
+
+          visit '/cart'
+          click_button 'Add 1 item'
+          visit '/cart'
+
+          expect(current_path).to eq('/cart')
+          expect(page).to have_content("Item Count: 2")
+        end
+        
         it 'next to each item in my cart is an incrementer for quantity of item' do
           visit "/items/#{@ogre.id}"
           click_button 'Add to Cart'
@@ -91,7 +103,7 @@ RSpec.describe 'Cart Show Page' do
            visit '/cart'
 
            expect(page).to have_content("Item Count: 1")
-            
+
            click_button 'Remove 1 item'
            visit '/cart'
 
@@ -101,17 +113,5 @@ RSpec.describe 'Cart Show Page' do
        end
       end
 
-      it 'next to each item in my cart is an incrementer for quantity of item' do
-        visit "/items/#{@ogre.id}"
-        click_button 'Add to Cart'
-
-        visit '/cart'
-        click_button 'Add 1 item'
-        visit '/cart'
-
-        expect(current_path).to eq('/cart')
-        expect(page).to have_content("Item Count: 2")
-      end
     end
   end
-end
