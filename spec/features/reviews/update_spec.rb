@@ -13,7 +13,7 @@ RSpec.describe 'Update Review' do
 
       click_link 'Edit Review'
 
-      expect(current_path).to eq("/reviews/#{@ogre.id}/edit")
+      expect(current_path).to eq("/reviews/#{@ogre_review_1.id}/edit")
     end
 
     it 'I can edit the review information' do
@@ -21,7 +21,7 @@ RSpec.describe 'Update Review' do
       content = "I like Ogres"
       rating = 5
 
-      visit "/reviews/#{@ogre.id}/edit"
+      visit "/reviews/#{@ogre_review_1.id}/edit"
 
       fill_in 'Title', with: title
       fill_in 'Content', with: content
