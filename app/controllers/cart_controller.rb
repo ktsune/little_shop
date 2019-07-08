@@ -23,10 +23,24 @@ class CartController < ApplicationController
     @items = cart.add_item(@item.id)
     session[:cart] = cart.contents
     quantity = cart.count_item(@item.id)
+    redirect_to '/cart'
+  end
+
+  def remove_item
+    @item = Item.find(params[:item_id])
+    cart = Cart.new(session[:cart])
+    @items = cart.remove_item(@item.id)
+    session[:cart] = cart.contents
+    quantity = cart.count_item(@item.id)
+    if quantity == 0
+      # redirect_to :action => 'delete' and return
+    end
+    redirect_to '/cart' and return
   end
 
   def remove_item
     cart.contents.delete(params[:item_id])
+
     redirect_to '/cart'
   end
 
@@ -35,3 +49,12 @@ class CartController < ApplicationController
     redirect_to '/cart'
   end
 end
+
+# private
+#
+#   def delete_redirect
+#     quantity = cart.count_item(@item.id)
+#     if quantity == 0
+#       redirect_to :action => 'delete'
+#     end
+#   end
