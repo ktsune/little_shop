@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     if @item.save
-      redirect_to "/items/#{item.id}"
+      redirect_to "/items/#{@item.id}"
     else
       flash[:error] = @item.errors.full_messages.join(". ")
       render :edit
