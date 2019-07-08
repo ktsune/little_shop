@@ -66,9 +66,10 @@ RSpec.describe 'Cart Show Page' do
           within "#id-#{@giant.id}", match: :first do
             click_button "Remove from Cart"
           end
-          # expect(page).to have_content("Cart: 1")
-          # expect(page).to have_content("#{@ogre.name}")
-          # expect(page).to have_content("#{@ogre.price}")
+          
+          expect(page).to have_content("Cart: 1")
+          expect(page).to have_content("#{@ogre.name}")
+          expect(page).to have_content("#{@ogre.price}")
         end
 
         it 'next to each item in my cart is an incrementer for quantity of item' do
@@ -83,22 +84,34 @@ RSpec.describe 'Cart Show Page' do
           expect(page).to have_content("Item Count: 2")
         end
 
-        describe "next to each item in my cart is an incrementer for quantity of item" do
-          it 'when the quantity hits zero, the item is removed from the cart' do
-            visit "/items/#{@ogre.id}"
-            click_button 'Add to Cart'
-            visit '/cart'
+       describe "next to each item in my cart is an incrementer for quantity of item" do
+         it 'when the quantity hits zero, the item is removed from the cart' do
+           visit "/items/#{@ogre.id}"
+           click_button 'Add to Cart'
+           visit '/cart'
 
-            expect(page).to have_content("Item Count: 1")
+           expect(page).to have_content("Item Count: 1")
             
-            click_button 'Remove 1 item'
-            visit '/cart'
+           click_button 'Remove 1 item'
+           visit '/cart'
 
-            expect(current_path).to eq('/cart')
-            expect(page).to have_content("Item Count: 0")
-          end
-        end
+           expect(current_path).to eq('/cart')
+           expect(page).to have_content("Item Count: 0")
+         end
+       end
+      end
+
+      it 'next to each item in my cart is an incrementer for quantity of item' do
+        visit "/items/#{@ogre.id}"
+        click_button 'Add to Cart'
+
+        visit '/cart'
+        click_button 'Add 1 item'
+        visit '/cart'
+
+        expect(current_path).to eq('/cart')
+        expect(page).to have_content("Item Count: 2")
       end
     end
   end
-# end
+end
