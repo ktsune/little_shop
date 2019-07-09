@@ -6,12 +6,15 @@
 
 <h4>Shipping Address: <%= @order.shipping_address %></h4>
 
-<% @items.each do |item, quantity| %>
+<% @order.items.each do |item| %>
   <h4>Item: <%= item.name %></h4>
   <h5>Merchant: <%= item.merchant.name %></h5>
   <h5>Cost: <%= item.price %></h5>
-  <h5>Amount: <%= quantity %></h5>
-  <h5>Subtotal: <%= item.price * quantity %></h5>
 <% end %>
+
+<% @order_items.each do |order_item| %>
+  <h5>Amount: <%= order_item.quantity %></h5>
+  <h5>Subtotal: <%= (order_item.price) * (order_item.quantity) %></h5>
+<% end  %>
 
 <h4>Total: <%= cart.total %></h4>
