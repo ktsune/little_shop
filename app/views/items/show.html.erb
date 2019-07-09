@@ -14,6 +14,12 @@
   <section id="#review-<%= review.id %>"><%= link_to 'Delete Review', "/reviews/#{review.id}", method: :delete %></section>
 <% end %>
 
+<section id="top_3_reviews">
+<% @item.top_3_reviews.each do |review| %>
+  <%= review.title %>
+  <%= review.rating %>
+<% end %>
+
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 <%= link_to 'New Review', "/items/#{@item.id}/reviews/new" %>
 <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>

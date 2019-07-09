@@ -5,4 +5,8 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_items
 
   validates_presence_of :name, :description, :price, :inventory, :image, :active
+
+  def top_3_reviews
+    reviews.select("reviews.*").order(rating: :desc).limit(3)
+  end
 end
