@@ -9,4 +9,8 @@ class Item < ApplicationRecord
   def top_3_reviews
     reviews.select("reviews.*").order(rating: :desc).limit(3)
   end
+
+  def bottom_3_reviews
+    reviews.select("reviews.*").order(:rating).limit(3)
+  end
 end

@@ -57,9 +57,23 @@ RSpec.describe 'Item Show Page' do
       visit "/items/#{@giant.id}"
 
       within ".topreviews" do
-        expect(page.all('li')[0]).to have_content(@giant_review_1.title)
-        expect(page.all('li')[1]).to have_content(@giant_review_4.title)
-        expect(page.all('li')[2]).to have_content(@giant_review_2.title)
+        expect(page).to have_content(@giant_review_1.title)
+        expect(page).to have_content(@giant_review_1.rating)
+        expect(page).to have_content(@giant_review_4.title)
+        expect(page).to have_content(@giant_review_4.rating)
+        expect(page).to have_content(@giant_review_2.title)
+        expect(page).to have_content(@giant_review_2.rating)
+        expect(page).to_not have_content(@giant_review_3.title)
+      end
+
+      within ".worstreviews" do
+        expect(page).to have_content(@giant_review_3.title)
+        expect(page).to have_content(@giant_review_3.rating)
+        expect(page).to have_content(@giant_review_2.title)
+        expect(page).to have_content(@giant_review_2.rating)
+        expect(page).to have_content(@giant_review_4.title)
+        expect(page).to have_content(@giant_review_4.rating)
+        expect(page).to_not have_content(@giant_review_1.title)
       end
     end
   end
