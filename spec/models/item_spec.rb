@@ -25,6 +25,7 @@ RSpec.describe Item, :type => :model do
       @hippo_review_3 = @hippo.reviews.create!(title: 'Do they even swim..?', content: 'I like Hippos', rating: 1)
       @hippo_review_4 = @hippo.reviews.create!(title: 'Yeah, with grace!', content: 'I like Hippos', rating: 5)
 
-      expect(@hippo.top_3_reviews).to eq(@hippo_review_4, @hippo_review_1, @hippo_review_2)
+      expect(@hippo.top_3_reviews).to eq([@hippo_review_4, @hippo_review_1, @hippo_review_2])
+    end
   end
 end
