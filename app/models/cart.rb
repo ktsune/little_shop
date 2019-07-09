@@ -35,12 +35,6 @@ class Cart
     end
   end
 
-  def quantity
-    @contents.each do |item_id, quantity|
-      quantity
-    end
-  end
-
   def display_cart
     cart = @contents.map do |item_id, quantity|
       [Item.find(item_id), quantity]
