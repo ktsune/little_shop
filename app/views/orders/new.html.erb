@@ -13,8 +13,8 @@
 <div id="shipping">
   <h3>Shipping Information</h3>
   <%= form_tag '/orders' do %>
-    <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
 
     <%= label_tag :address %>
     <%= text_field_tag :address %>
@@ -25,8 +25,8 @@
     <%= label_tag :state %>
     <%= text_field_tag :state %>
 
-    <%= label_tag :zip %>
-    <%= text_field_tag :zip %>
+    <%= label_tag :zipcode %>
+    <%= text_field_tag :zipcode %>
 
     <%= submit_tag "Create Order" %>
 
