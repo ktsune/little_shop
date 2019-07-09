@@ -10,11 +10,12 @@ RSpec.describe 'Item Show Page' do
       @hippo = @brian.items.create!(name: 'Hippo', description: "I'm a Hippo!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
 
       @ogre_review_1 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 5)
-      @ogre_review_2 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 5)
+      @ogre_review_2 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 3)
+      @ogre_review_3 = @ogre.reviews.create!(title: 'Ogres are cool', content: 'I like Ogres', rating: 3)
       @giant_review_1 = @giant.reviews.create!(title: 'Giants are cool', content: 'I like Giants', rating: 5)
-      @giant_review_2 = @giant.reviews.create!(title: 'Giants are cool', content: 'I like Giants', rating: 5)
-      @hippo_review_1 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 5)
-      @hippo_review_2 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 5)
+      @giant_review_2 = @giant.reviews.create!(title: 'Giants are cool', content: 'I like Giants', rating: 2)
+      @hippo_review_1 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 4)
+      @hippo_review_2 = @hippo.reviews.create!(title: 'Hippos are cool', content: 'I like Hippos', rating: 3)
     end
 
     it "I can see the items details" do
@@ -44,5 +45,17 @@ RSpec.describe 'Item Show Page' do
       expect(current_path).to eq("/items")
       expect(page).to have_content("#{@ogre.name} has been added to your cart!")
     end
+
+    it "has review statistics" do
+      visit "/items/#{@ogre.id}"
+
+      within ".reviews" do
+
+    end
+
+# I see an area on the page for statistics about reviews:
+# - the top three reviews for this item (title and rating only)
+# - the bottom three reviews for this item  (title and rating only)
+# - the average rating of all reviews for this item
   end
 end
