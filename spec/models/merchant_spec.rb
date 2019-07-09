@@ -38,7 +38,7 @@ RSpec.describe Merchant do
       @order_2 = @ogre.orders.create!(username: "Stella", address: "123 Giant Street, Denver, CO, 81823", city: "Denver", state: "CO", zipcode: 80209)
       @order_3 = @ogre.orders.create!(username: "Stella", address: "123 Giant Street, Denver, CO, 81823", city: "Denver", state: "CO", zipcode: 80209)
 
-      expect(@megan.distinct_cities).to eq([@order_1.city, @order_2.city])
+      expect(@megan.distinct_cities).to eq([@order_2.city, @order_1.city])
     end
   end
 end
