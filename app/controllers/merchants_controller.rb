@@ -28,6 +28,7 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
+    binding.pry
     if !@merchant.update(new_params)
       flash[:error] = @merchant.errors.full_messages.join(". ")
     else
