@@ -4,10 +4,12 @@ class Cart
   def initialize(contents)
     if !contents.nil?
       @contents = contents
-      @contents.default = 0
     else
-      @contents = Hash.new(0)
+      # @contents = Hash.new(0)
+      @contents = {}
     end
+    @contents.default = 0
+
   end
 
   def item_count
