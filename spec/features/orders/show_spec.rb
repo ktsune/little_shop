@@ -28,7 +28,7 @@ RSpec.describe "Order show" do
       click_link "Checkout"
 
       within '#shipping' do
-        fill_in "Name", with: name
+        fill_in "Username", with: name
         fill_in "Address", with: address
         fill_in "City", with: city
         fill_in "State", with: state
@@ -83,7 +83,7 @@ RSpec.describe "Order show" do
       click_link "Checkout"
 
       within '#shipping' do
-        fill_in "Name", with: name
+        fill_in "Username", with: name
         fill_in "Address", with: address
         fill_in "City", with: city
         fill_in "Zip", with: zip
