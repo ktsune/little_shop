@@ -36,7 +36,7 @@ RSpec.describe 'New Order' do
       expect(page).to have_content("Shipping Information")
 
       within '#shipping' do
-        fill_in "Name", with: 'name'
+        fill_in "Username", with: 'name'
         fill_in "Address", with: 'streeterville'
         fill_in "City", with: 'city'
         fill_in "State", with: 'staterville'
