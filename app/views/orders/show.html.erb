@@ -4,7 +4,11 @@
 <h5>Order Date: <%= @order.created_at %></h5>
 <h4>Name: <%= @order.username %></h4>
 
-<h4>Shipping Address: <%= @order.shipping_address %></h4>
+<h4>Shipping Address: </h4>
+<p>Street:  <%= @order.address %></p>
+<p>City:  <%= @order.city %></p>
+<p>State:  <%= @order.state %></p>
+<p>Zip:  <%= @order.zipcode %></p>
 
 <% @order.items.each do |item| %>
   <h4>Item: <%= item.name %></h4>
