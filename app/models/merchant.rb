@@ -11,8 +11,8 @@ class Merchant < ApplicationRecord
     self.items.average(:price)
   end
 
-  def distinct_cities
-    binding.pry
-    self.order.select(:city).distinct
-  end
+  # def distinct_cities
+  #   # binding.pry
+  #   self.order.select(:city).distinct
+  # end
 end
