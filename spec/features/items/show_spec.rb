@@ -75,11 +75,8 @@ RSpec.describe 'Item Show Page' do
         expect(page).to have_content(@giant_review_4.rating)
         expect(page).to_not have_content(@giant_review_1.title)
       end
+
+      expect(page).to have_content("Average Review Rating: 3")
     end
   end
 end
-
-# I see an area on the page for statistics about reviews:
-# - the top three reviews for this item (title and rating only)
-# - the bottom three reviews for this item  (title and rating only)
-# - the average rating of all reviews for this item

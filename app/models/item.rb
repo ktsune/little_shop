@@ -13,4 +13,8 @@ class Item < ApplicationRecord
   def bottom_3_reviews
     reviews.select("reviews.*").order(:rating).limit(3)
   end
+
+  def average_review
+    reviews.average(:rating).to_i
+  end
 end

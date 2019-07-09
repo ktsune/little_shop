@@ -5,12 +5,14 @@
 <p>Sold by: <%= link_to @item.merchant.name, "/merchants/#{@item.merchant_id}" %>, Inventory: <%= @item.inventory %></p>
 <p><%= @item.active ? "Active" : "Inactive" %></p>
 
+<h4>Average Review Rating: <%= @item.average_review %> </h4>
+
 <h3>Top Reviews</h3>
 <div class="topreviews">
   <% @item.top_3_reviews.each do |review| %>
   <ul>
-  <li><%= review.title %></li>
-  <li><%= review.rating %></li>
+  <li><p>Title: <%= review.title %></p></li>
+  <li><p>Rating: <%= review.rating %></p></li>
   </ul>
   <% end %>
 </div>
@@ -19,8 +21,8 @@
 <div class="worstreviews">
   <% @item.bottom_3_reviews.each do |review| %>
   <ul>
-  <li><%= review.title %></li>
-  <li><%= review.rating %></li>
+  <li><p>Title: <%= review.title %></p></li>
+  <li><p>Rating: <%= review.rating %></p></li>
   </ul>
   <% end %>
 </div>
