@@ -1,6 +1,8 @@
 require 'rails_helper'
 
+
 RSpec.describe 'Item Show Page' do
+  include ActionView::Helpers::NumberHelper
   describe 'As a Visitor' do
     before :each do
       @megan = Merchant.create!(name: 'Megans Marmalades', address: '123 Main St', city: 'Denver', state: 'CO', zip: 80218)
@@ -22,7 +24,8 @@ RSpec.describe 'Item Show Page' do
 
       expect(page).to have_content(@ogre.name)
       expect(page).to have_content(@ogre.description)
-      # expect(page).to have_content("Price: #{number_to_currency(@ogre.price)}")
+
+      expect(page).to have_content("Price: #{number_to_currency(@ogre.price)}")
       expect(page).to have_content("Active")
       expect(page).to have_content("Inventory: #{@ogre.inventory}")
       expect(page).to have_content("Sold by: #{@megan.name}")

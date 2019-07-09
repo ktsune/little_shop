@@ -17,7 +17,7 @@ class Cart
   def add_item(item_id)
     @contents[item_id.to_s] += 1
   end
-  
+
   def remove_item(item_id)
     @contents[item_id.to_s] -= 1
   end

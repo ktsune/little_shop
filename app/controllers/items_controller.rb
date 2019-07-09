@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  # include ActionView::Helpers::TextHelper
+
   def index
     if params[:merchant_id]
       @merchant = Merchant.find(params[:merchant_id])
