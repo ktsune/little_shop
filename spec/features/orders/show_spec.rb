@@ -90,7 +90,7 @@ RSpec.describe "Order show" do
       end
 
       click_button "Create Order"
-      expect(page).to have_content("You are missing required shipping address information!")
+      expect(page).to have_content("State can't be blank")
     end
   end
 end
