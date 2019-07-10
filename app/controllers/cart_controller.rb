@@ -30,7 +30,7 @@ class CartController < ApplicationController
     session[:cart] = cart.contents
     quantity = cart.count_item(@item.id)
     if quantity == 0
-      redirect_to :action => 'delete' and return
+      render :action => 'delete_item' and return
     end
     redirect_to '/cart' and return
   end

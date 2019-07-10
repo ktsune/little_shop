@@ -1,45 +1,49 @@
+
 <h1><%= @item.name %></h1>
 <p><%= @item.description %></p>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw"><br>
 <p>Price: <%= number_to_currency(@item.price) %></p>
 <p>Sold by: <%= link_to @item.merchant.name, "/merchants/#{@item.merchant_id}" %>, Inventory: <%= @item.inventory %></p>
 <p><%= @item.active ? "Active" : "Inactive" %></p>
+<%= button_to "Add to Cart", "/cart/#{@item.id}" %><br>
+
+<%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
+<% if !@item.ordered %>
+  <%= link_to 'Delete Item', "/items/#{@item.id}", method: :delete %>
+<% end %>
 
 <h4>Average Review Rating: <%= @item.average_review %> </h4>
 
-<h3>Top Reviews</h3>
+<%= link_to 'New Review', "/items/#{@item.id}/reviews/new" %>
+
+<h4>Top Reviews</h4>
 <div class="topreviews">
   <% @item.top_3_reviews.each do |review| %>
-  <ul>
-  <li><p>Title: <%= review.title %></p></li>
-  <li><p>Rating: <%= review.rating %></p></li>
-  </ul>
+  <ol>
+    <p>Title: <%= review.title %></p
+    <p>Rating: <%= review.rating %></p>
+  </ol>
   <% end %>
 </div>
 
-<h3>Bottom Reviews</h3>
+<h4>Bottom Reviews</h4>
 <div class="worstreviews">
   <% @item.bottom_3_reviews.each do |review| %>
-  <ul>
-  <li><p>Title: <%= review.title %></p></li>
-  <li><p>Rating: <%= review.rating %></p></li>
-  </ul>
+  <ol>
+    <p>Title: <%= review.title %></p>
+    <p>Rating: <%= review.rating %></p>
+  </ol>
   <% end %>
 </div>
 
+<h4>Reviews</h4>
+
 <% @item.reviews.each do |review| %>
-  <h4>Review</h4>
-  <p>Title: <%= review.title %></p>
-  <p>Body: <%= review.content %></p>
-  <p>Rating: <%= review.rating %></p>
-  <%= link_to "Edit Review", "/reviews/#{review.id}/edit" %>
-  <section id="#review-<%= review.id %>"><%= link_to 'Delete Review', "/reviews/#{review.id}", method: :delete %></section>
+  <ol>
+    <p>Title: <%= review.title %></p>
+    <p>Body: <%= review.content %></p>
+    <p>Rating: <%= review.rating %></p>
+    <%= link_to "Edit Review", "/reviews/#{review.id}/edit" %>
+    <section id="#review-<%= review.id %>"><%= link_to 'Delete Review', "/reviews/#{review.id}", method: :delete %></section>
+  </ol>
 <% end %>
-
-
-<%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
-<%= link_to 'New Review', "/items/#{@item.id}/reviews/new" %>
-<% if !@item.ordered %>
-  <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
-<% end %>
-<%= button_to "Add to Cart", "/cart/#{@item.id}" %>
