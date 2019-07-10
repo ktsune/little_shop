@@ -1,33 +1,33 @@
 <h1>New Order</h1>
 
-<% @items.each do |item, quantity| %>
-  <h4>Item: <%= link_to item.name, "/items/#{item.id}" %></h4>
-  <h5>Merchant: <%= item.merchant.name %></h5>
-  <h5>Cost: <%= number_to_currency(item.price) %></h5>
-  <h5>Amount: <%= quantity %></h5>
-  <h5>Subtotal: <%= number_to_currency(item.price * quantity) %></h5>
-<% end %>
-
-<h4>Total: <%= number_to_currency(cart.total) %></h4>
-
-<div id="shipping">
+<section id="shipping">
   <h3>Shipping Information</h3>
   <%= form_tag '/orders' do %>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
+    <%= label_tag :username %>:<br>
+    <%= text_field_tag :username %><br>
 
-    <%= label_tag :address %>
-    <%= text_field_tag :address %>
+    <%= label_tag :address %>:<br>
+    <%= text_field_tag :address %><br>
 
-    <%= label_tag :city %>
-    <%= text_field_tag :city %>
+    <%= label_tag :city %>:<br>
+    <%= text_field_tag :city %><br>
 
-    <%= label_tag :state %>
-    <%= text_field_tag :state %>
+    <%= label_tag :state %>:<br>
+    <%= text_field_tag :state %><br>
 
-    <%= label_tag :zipcode %>
-    <%= text_field_tag :zipcode %>
+    <%= label_tag :zipcode %>:<br>
+    <%= text_field_tag :zipcode %><br>
 
     <%= submit_tag "Create Order" %>
 
   <% end %>
+
+<% @items.each do |item, quantity| %>
+  <p>Item: <%= link_to item.name, "/items/#{item.id}" %></p>
+  <p>Merchant: <%= link_to "#{item.merchant.name}", "/merchants/#{item.merchant.id}" %></p>
+  <p>Cost: <%= number_to_currency(item.price) %></p>
+  <p>Quantity: <%= quantity %></p>
+  <p>Subtotal: <%= number_to_currency(item.price * quantity) %></p>
+<% end %>
+
+<h4>Total: <%= number_to_currency(cart.total) %></h4>

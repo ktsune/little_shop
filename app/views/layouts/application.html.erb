@@ -7,8 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
+    <section class="background_ogre">
     <nav>
       <%= link_to 'Merchants', '/merchants' %>
       <%= link_to 'Items', '/items' %>
@@ -20,5 +20,6 @@
     <% end %>
 
     <%= yield %>
+    </section>
   </body>
 </html>
