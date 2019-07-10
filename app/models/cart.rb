@@ -5,7 +5,6 @@ class Cart
     if !contents.nil?
       @contents = contents
     else
-      # @contents = Hash.new(0)
       @contents = {}
     end
     @contents.default = 0
@@ -40,5 +39,4 @@ class Cart
       [Item.find(item_id), quantity]
     end
   end
-
 end
