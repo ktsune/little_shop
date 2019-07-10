@@ -14,4 +14,14 @@ class Merchant < ApplicationRecord
   def distinct_cities
     self.items.joins(:orders).distinct.pluck(:city)
   end
+
+  def active_orders?
+    id = self.items.joins(:orders).pluck(:merchant_id).join('')
+    # binding.pry
+    if id == self.id.to_s
+      true
+    else
+      false
+    end
+  end
 end
