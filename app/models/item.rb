@@ -17,4 +17,13 @@ class Item < ApplicationRecord
   def average_review
     reviews.average(:rating).to_i
   end
+
+  def ordered
+    id = orders.pluck(:item_id).join('')
+    if id == self.id.to_s
+      true
+    else
+      false
+    end 
+  end
 end
