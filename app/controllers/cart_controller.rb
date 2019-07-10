@@ -27,11 +27,10 @@ class CartController < ApplicationController
   def remove_item
     @item = Item.find(params[:item_id])
     session[:cart] = cart.contents
-    quantity = cart.count_item(@item.id)
     cart.remove_item(@item.id)
+    quantity = cart.count_item(@item.id)
     if quantity == 0
-      @items = cart.delete_item(@item.id)
-      render :action => 'delete_item' and return
+      cart.contents.delete(params[:item_id])
     end
     redirect_to '/cart' and return
   end
