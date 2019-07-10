@@ -6,7 +6,8 @@
 </section>
 
 <p>Number of Items: <%= @merchant.count_of_items %> </p>
-<p>Average Price Per Item: <%= @merchant.average_price %> </p>
+<p>Average Price Per Item: <%= @merchant.average_price.to_f %> </p>
+<p>Distinct Cities: <%= @merchant.distinct_cities.join(", ") %> </p>
 
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
 <% if !@merchant.active_orders? %>
