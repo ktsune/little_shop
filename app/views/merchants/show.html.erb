@@ -8,7 +8,6 @@
 <p>Number of Items: <%= @merchant.count_of_items %> </p>
 <p>Average Price Per Item: <%= @merchant.average_price %> </p>
 
-<%= link_to "Items", "/merchants/#{@merchant.id}/items" %>
 
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
 <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>

@@ -6,7 +6,7 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
     @items = @merchant.items
-    render :layout => false
+    # render :layout => false
   end
 
   def new
@@ -28,7 +28,6 @@ class MerchantsController < ApplicationController
 
   def update
     @merchant = Merchant.find(params[:id])
-    binding.pry
     if !@merchant.update(new_params)
       flash[:error] = @merchant.errors.full_messages.join(". ")
     else
