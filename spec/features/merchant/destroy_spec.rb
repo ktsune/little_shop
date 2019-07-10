@@ -30,10 +30,3 @@ RSpec.describe 'Destroy Existing Merchant' do
     end
   end
 end
-
-# As a visitor
-# If a merchant has items that have been ordered
-# I can not delete that merchant
-# Either:
-# - there is no button visible for me to delete the merchant
-# - if I click on the delete button, I see a flash message indicating that the merchant can not be deleted.

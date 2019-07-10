@@ -9,4 +9,6 @@
 <p>Average Price Per Item: <%= @merchant.average_price %> </p>
 
 <%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
-<%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+<% if !@merchant.active_orders? %>
+  <%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete %>
+<% end %>

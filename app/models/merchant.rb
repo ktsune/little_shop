@@ -17,7 +17,6 @@ class Merchant < ApplicationRecord
 
   def active_orders?
     id = self.items.joins(:orders).pluck(:merchant_id).join('')
-    # binding.pry
     if id == self.id.to_s
       true
     else
