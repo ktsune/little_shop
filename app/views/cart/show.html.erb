@@ -1,25 +1,22 @@
-<h2>Cart</h2>
-
+<p>Order Total: <%= number_to_currency(cart.total) %></p>
 <%= link_to "Checkout", new_order_path %>
 
 <% @items.each do |item,quantity| %>
 <div id="id-<%= item.id %>" class="cart_items">
   <h4>Item: <%= link_to item.name, "/items/#{item.id}" %></h4>
   <p><%= image_tag item.image %></p>
-  <p>Merchant: <%= item.merchant.name %></p>
-  <p>Price: <%= item.price %></p>
-  <p>Subtotal: <%= item.price * quantity %></p>
+  <p>Merchant: <%= link_to "#{item.merchant.name}", "/merchants/#{item.merchant.id}" %></p>
+  <p>Price: <%= number_to_currency(item.price) %></p>
+  <p>Subtotal: <%= number_to_currency(item.price * quantity) %></p>
+  <%= button_to "Remove 1 item", "/cart/remove_item/#{item.id}", method: :patch %>
   <% if quantity > item.inventory %>
     <p>Sorry, we're out of this item!</p>
   <% else %>
     <%= button_to "Add 1 item", "/cart/add_item/#{item.id}", method: :patch %>
-    <p>Item Count: <%= quantity %></p>
+    <p>Quantity: <%= quantity %></p>
   <% end %>
   <%= button_to "Remove from Cart", "/cart/#{item.id}", method: :delete %>
-  <%= button_to "Remove 1 item", "/cart/remove_item/#{item.id}", method: :patch %>
-<% end %>
-
-<p>Total: <%= cart.total %></p>
+<% end %><br>
 
 <% if @items.empty? %>
   <p>There are no items in your cart!</p>

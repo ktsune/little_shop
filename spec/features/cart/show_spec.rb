@@ -31,12 +31,11 @@ RSpec.describe 'Cart Show Page' do
 
         visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-
         visit '/cart'
 
         expect(page).to have_content("Cart: 3")
-        expect(page).to have_content("Subtotal: 50")
-        expect(page).to have_content("Total: 90")
+        expect(page).to have_content("Subtotal: #{number_to_currency(50)}")
+        expect(page).to have_content("Order Total: #{number_to_currency(90)}")
         expect(page).to have_content("Ogre")
         expect(page).to have_content(@ogre.merchant.name)
       end
@@ -81,7 +80,7 @@ RSpec.describe 'Cart Show Page' do
         visit '/cart'
 
         expect(current_path).to eq('/cart')
-        expect(page).to have_content("Item Count: 2")
+        expect(page).to have_content("Quantity: 2")
       end
 
 
@@ -90,7 +89,7 @@ RSpec.describe 'Cart Show Page' do
         click_button 'Add to Cart'
         visit '/cart'
 
-        expect(page).to have_content("Item Count: 1")
+        expect(page).to have_content("Quantity: 1")
 
         click_button 'Remove 1 item'
         visit '/cart'
