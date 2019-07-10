@@ -51,7 +51,7 @@ RSpec.describe 'Existing Merchant Update' do
 
       click_button 'Update Merchant'
 
-      expect(page).to have_content("Zip can't be blank")
+      expect(page).to have_content("Zip can't be blank") 
 
       visit "/merchants/#{@megan.id}/edit"
 
