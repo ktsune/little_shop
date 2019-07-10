@@ -36,7 +36,7 @@ RSpec.describe 'Cart Show Page' do
 
         expect(page).to have_content("Cart: 3")
         expect(page).to have_content("Subtotal: 50")
-        expect(page).to have_content("Total: 90")
+        expect(page).to have_content("Order Total: #{number_to_currency(90)}")
         expect(page).to have_content("Ogre")
         expect(page).to have_content(@ogre.merchant.name)
       end
