@@ -34,6 +34,16 @@ RSpec.describe 'Delete Item' do
         expect(page).to_not have_content(r1)
         expect(page).to_not have_content(r2)
       end
+
+      it "does not show a delete button if item has been ordered" do
+        @order_1 = @ogre.orders.create!(username: "Regina", address: "123 4th St.", city: "Boulder", state: "MI", zipcode: 98765)
+
+        visit "/items/#{@ogre.id}"
+        expect(page).to_not have_link('Delete')
+
+        visit "/items/#{@giant.id}"
+        expect(page).to have_link('Delete')
+      end
     end
   end
 end

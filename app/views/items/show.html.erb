@@ -39,5 +39,7 @@
 
 <%= link_to 'Update Item', "/items/#{@item.id}/edit" %>
 <%= link_to 'New Review', "/items/#{@item.id}/reviews/new" %>
-<%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+<% if !@item.ordered %>
+  <%= link_to 'Delete', "/items/#{@item.id}", method: :delete %>
+<% end %>
 <%= button_to "Add to Cart", "/cart/#{@item.id}" %>
