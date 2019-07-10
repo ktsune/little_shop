@@ -41,7 +41,7 @@ RSpec.describe 'Delete Item' do
         visit "/items/#{@ogre.id}"
         expect(page).to_not have_link('Delete')
 
-        visit "/items/#{@ogre.id}"
+        visit "/items/#{@giant.id}"
         expect(page).to have_link('Delete')
       end
     end
