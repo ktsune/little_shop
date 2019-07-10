@@ -29,9 +29,9 @@ RSpec.describe 'New Order' do
       expect(page).to have_content(@ogre.price)
       expect(page).to have_content("Amount: 1")
       expect(page).to have_content("Amount: 1")
-      expect(page).to have_content("Subtotal: 50")
-      expect(page).to have_content("Subtotal: 20")
-      expect(page).to have_content("Total: 70")
+      expect(page).to have_content("Subtotal: $50.00")
+      expect(page).to have_content("Subtotal: $20.00")
+      expect(page).to have_content("Total: $70.00")
 
       expect(page).to have_content("Shipping Information")
 

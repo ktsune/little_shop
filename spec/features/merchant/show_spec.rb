@@ -35,7 +35,7 @@ RSpec.describe 'Merchant Show Page' do
       visit "/merchants/#{@megan.id}"
 
       expect(page).to have_content("Number of Items: 2")
-      expect(page).to have_content("Average Price Per Item: 35.0")
+      expect(page).to have_content("Average Price Per Item: $35.00")
       expect(page).to have_content("Distinct Cities: Denver, Golden")
     end
   end
