@@ -38,5 +38,23 @@ RSpec.describe 'Update Item Page' do
       expect(page).to have_content("Active")
       expect(page).to have_content("Inventory: #{inventory}")
     end
+
+    it 'I can edit the items information' do
+      name = 'Giant'
+      description = "I'm a Giant!"
+      price = 25
+      image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw'
+      inventory = 12
+
+      visit "/items/#{@ogre.id}/edit"
+
+      fill_in 'Name', with: name
+      fill_in 'Description', with: description
+      fill_in 'Image', with: image
+      fill_in 'Inventory', with: inventory
+      click_button 'Update Item'
+
+      expect(page).to have_content("Price can't be blank")
+    end
   end
 end

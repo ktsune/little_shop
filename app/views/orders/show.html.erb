@@ -11,7 +11,7 @@
 <p>Zip:  <%= @order.zipcode %></p>
 
 <% @order.items.each do |item| %>
-  <h4>Item: <%= item.name %></h4>
+  <h4>Item: <%= link_to item.name, "/items/#{item.id}" %></h4>
   <h5>Merchant: <%= item.merchant.name %></h5>
   <h5>Cost: <%= item.price %></h5>
 <% end %>

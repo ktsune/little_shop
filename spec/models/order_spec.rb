@@ -7,10 +7,10 @@ RSpec.describe Order do
   end
 
   describe 'Validations' do
-    it should {validates_presence_of :username}
-    it should {validates_presence_of :address}
-    it should {validates_presence_of :city}
-    it should {validates_presence_of :state}
-    it should {validates_presence_of :zipcode}
+    it { should validate_presence_of :username}
+    it { should validate_presence_of :address}
+    it { should validate_presence_of :city}
+    it { should validate_presence_of :state}
+    it { should validate_presence_of :zipcode}
   end
 end
