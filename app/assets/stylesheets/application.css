@@ -15,6 +15,5 @@
  */
 
 .background_ogre {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://studybreaks.com/wp-content/uploads/2019/07/Untitled_Artwork-27.jpg");
-
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://studybreaks.com/wp-content/uploads/2019/07/Untitled_Artwork-27.jpg");
 }
