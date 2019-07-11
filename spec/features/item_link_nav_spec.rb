@@ -30,7 +30,7 @@ RSpec.describe "Item Link Name" do
         expect(page).to have_link("#{@ogre.name}")
         click_link("#{@ogre.name}")
         expect(current_path).to eq("/items/#{@ogre.id}")
-        # binding.pry
+
         visit order_path(@order)
         expect(page).to have_link("#{@ogre.name}")
         click_link("#{@ogre.name}")
