@@ -54,7 +54,7 @@ RSpec.describe Cart do
       cart.add_item(@giant.id)
       cart.remove_item(@ogre.id)
 
-      Cart.should_not == @ogre.id
+      expect(cart.contents).to_not eq(@ogre.id)
     end
 
     it "I can the count the quantity of each item" do
@@ -77,7 +77,7 @@ RSpec.describe Cart do
       cart = Cart.new(nil)
       cart.add_item(@ogre.id)
 
-      cart.display_cart.should == [[@ogre, 1]]
+      expect(cart.display_cart).to eq([[@ogre, 1]])
     end
   end
 end
